@@ -65,3 +65,13 @@ insert into estudiantes(cedula,nombre,apellido,email,fecha_nacimiento,codigo_pro
 values ('0103402789','Julia','Ramirez','jr023@email.com','2000/10/20',123);
 insert into estudiantes(cedula,nombre,apellido,email,fecha_nacimiento,codigo_profesor)
 values ('0120402009','Julio','Veliz','jv852@email.com','1999/07/10',369);
+--consulta
+select pr.codigo,es.nombre,es.apellido from
+estudiantes es, profesores pr
+where es.codigo_profesor = pr.codigo
+and es.apellido like '%n%';
+--subconsulta
+select es.* from
+estudiantes es, profesores pr
+where es.codigo_profesor = pr.codigo
+and pr.nombre = 'Francisco'

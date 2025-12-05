@@ -11,8 +11,8 @@ alter table registro_entrada
 add column codigo_empleado int not null
 --establecemos una columna como calave foranea
 alter table registro_entrada
-add constraint codigo_empleado_fk
-foreign key (codigo_empleado)
+add constraint codigo_registro_fk
+foreign key (codigo_registro)
 references empleado_registro(codigo_empleado)
 
 create table empleado_registro(
@@ -69,4 +69,16 @@ insert into empleado_registro(codigo_empleado,nombre,fecha,hora)
 values(2209,'Laura','2025/10/20','11:25');
 insert into empleado_registro(codigo_empleado,nombre,fecha,hora)
 values(2210,'Monica','2025/03/28','16:31');
-
+--consulta
+select re.cedula_empleado, er.fecha, er.nombre from
+registro_entrada re, empleado_registro er
+where re.codigo_registro = er.codigo_empleado
+and (re.fecha between '2023/08/01' and '2023/08/31') 
+or re.cedula_empleado like '17%' and (er.hora between '08:00' and '12:00')
+or (er.fecha between '2023/10/06' and '2023/10/20') 
+and re.cedula_empleado like '08%' and (re.hora between '09:00' and '13:00');
+--subconsulta
+select er.codigo_empleado, er.nombre from
+registro_entrada re, empleado_registro er
+where re.codigo_registro = er.codigo_empleado
+and re.cedula_empleado = '2201'

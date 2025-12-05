@@ -65,3 +65,13 @@ insert into prestamo(cedula, monto, fecha_prestamo, hora_prestamo, garante)
 values('0123456787',1000,'2025/09/27','11:21','Dangon');
 insert into prestamo(cedula, monto, fecha_prestamo, hora_prestamo, garante)
 values('0123456788',550,'2025/10/01','14:55','Akira');
+--consulta
+select pe.cantidad_ahorrada, pr.monto, pr.garante from
+persona pe, prestamo pr
+where pe.cedula = pr.cedula
+and (pr.monto between money(100) and money(1000));
+--subconsuta
+select pe.* from
+persona pe, prestamo pr
+where pe.cedula = pr.cedula
+and pe.nombre = 'Sean';

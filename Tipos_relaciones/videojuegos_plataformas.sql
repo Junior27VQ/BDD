@@ -61,3 +61,14 @@ insert into plataformas(id_plataforma, nombre_plataforma, codigo_videojuego)
 values(8,'Twitch',12345);
 insert into plataformas(id_plataforma, nombre_plataforma, codigo_videojuego)
 values(9,'Ubisoft Connect',70215);
+--consulta
+select vi.nombre,vi.descripcion,vi.valoracion,pl.nombre_plataforma from
+videojuegos vi, plataformas pl
+where vi.codigo = pl.codigo_videojuego
+and vi.descripcion = 'Guerra' and vi.valoracion > 7 
+or vi.nombre like'C%' and vi.valoracion > 8 and vi.nombre like 'D%';
+--subconsulta
+select pl.* from
+videojuegos vi, plataformas pl
+where vi.codigo = pl.codigo_videojuego
+and vi.nombre = 'God of Ward'

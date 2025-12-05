@@ -61,3 +61,13 @@ insert into compras(id_compra,cedula,fecha_creacion,monto)
 values (9,'5678901234','2025/12/03',35);
 insert into compras(id_compra,cedula,fecha_creacion,monto)
 values (10,'6789012345','2025/12/01',13);
+--consulta
+select cl.nombre,cl.apellido from
+clientes cl,compras co
+where cl.cedula = co.cedula
+and cl.cedula like '%7%';
+--subconsuta
+select cl.* from
+clientes cl,compras co
+where cl.cedula = co.cedula
+and cl.nombre = 'Monica';

@@ -20,6 +20,7 @@ create table cuentas(
 	  references usuario (cedula)
 )
 --insertrar informacion a las tablas
+select * from usuario
 insert into usuario(cedula,nombre,apellido,tipo_cuenta,limite_credito)
 values ('14785','Estiven','Dio','Ahorro',1002.2);
 insert into usuario(cedula,nombre,apellido,tipo_cuenta,limite_credito)
@@ -40,8 +41,9 @@ insert into usuario(cedula,nombre,apellido,tipo_cuenta,limite_credito)
 values ('52135','Leo','Griego','Ahorro',1025.35);
 insert into usuario(cedula,nombre,apellido,tipo_cuenta,limite_credito)
 values ('46582','Atenea','Diosa','Corriente',100.2);
-select * from usuario
+
 --insertar informacion a la taba cuentas
+select * from cuentas
 insert into cuentas(numero_cuenta,cedula_propietario,fecha_creacion,saldo)
 values ('64582','14785','2022/08/21',100);
 insert into cuentas(numero_cuenta,cedula_propietario,fecha_creacion,saldo)
@@ -66,4 +68,14 @@ insert into cuentas(numero_cuenta,cedula_propietario,fecha_creacion,saldo)
 values ('02365','25813','2023/05/06',150);
 insert into cuentas(numero_cuenta,cedula_propietario,fecha_creacion,saldo)
 values ('14785','52135','2023/09/21',1000);
-select * from cuentas
+--consulta
+select us.nombre, cu.numero_cuenta from 
+usuario us,cuentas cu
+where us.cedula = cu.cedula_propietario
+and (cu.saldo between money(100) and money(1000));
+--subconsulta
+select us.*,cu.* from 
+usuario us,cuentas cu
+where us.cedula = cu.cedula_propietario
+and (cu.fecha_creacion between '2022/09/21' and '2023/09/21');
+

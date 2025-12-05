@@ -61,4 +61,13 @@ insert into ventas(id_venta,codigo_producto,fecha_venta,cantidad)
 values (9,5,'2025/04/04',8);
 insert into ventas(id_venta,codigo_producto,fecha_venta,cantidad)
 values (8,8,'2025/05/05',9);
-
+--consulta
+select pr.nombre, pr.stock, ve.cantidad from
+productos pr, ventas ve
+where pr.codigo = ve.codigo_producto
+and pr.nombre like '%m%' or pr.descripcion is null;
+--subconsulta
+select nombre, stock from
+productos pr, ventas ve
+where pr.codigo = ve.codigo_producto
+and ve.cantidad = 5;
